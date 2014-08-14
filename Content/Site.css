@@ -1,0 +1,17 @@
+﻿.calendar {
+    
+}
+
+.calendar .day {
+    width: 180px; 
+    height: 290px;
+    margin-right: 8px;
+    margin-bottom: 6px;
+    padding: 5px; 
+    border: 1px solid gray;
+    float:left;
+}
+
+.calendar .day.registered {
+    background-color: rgb(246, 246, 122);
+}

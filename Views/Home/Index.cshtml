@@ -1,0 +1,13 @@
+﻿@using ReservationSystem.Extensions
+@{
+    ViewBag.Title = "Lesmír - Rezervační systém";
+}
+
+<h1>Test</h1>
+
+<div ng-view></div>
+
+@using (Html.BeginHtmlTemplate(id: "calendar.html"))
+{
+    @Html.Partial("Parts/_Calendar")
+}
