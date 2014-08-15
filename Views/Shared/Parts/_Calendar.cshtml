@@ -1,10 +1,14 @@
 ﻿<div class="filter">
     <select ng-options="a.Id as a.Name for a in vm.classes" ng-model="vm.filter.class">
-        <option value="">Vyber třídu</option>
+        <option value="">Třída</option>
     </select>
     
     <select ng-options="a.Id as a.Name for a in vm.getPeopleForClass(vm.filter.class)" ng-model="vm.filter.person">
-        <option value="">Vyber dítě</option>
+        <option value="">Dítě</option>
+    </select>
+    
+    <select ng-options="a.Id as a.Name for a in vm.months" ng-model="vm.filter.month">
+        <option value="">Měsíc</option>
     </select>
 </div>
 

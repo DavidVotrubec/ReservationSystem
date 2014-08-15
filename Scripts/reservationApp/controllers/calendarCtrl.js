@@ -4,11 +4,25 @@
     var baseUrl = 'http://davidvotrubec.apiary-mock.com/' + 'reservation/';
 
     var that = this;
-    this.filter = { 'class': null, person: null };
+    this.filter = { 'class': null, person: null, year: 2014, month: 9 };
 
     this.days = [];
     this.people = [];
     this.classes = [];
+    this.months = [
+        { Id: 1, Name: "Leden" },
+        { Id: 2, Name: "Únor" },
+        { Id: 3, Name: "Březen" },
+        { Id: 4, Name: "Duben" },
+        { Id: 5, Name: "Květen" },
+        { Id: 6, Name: "Červen" },
+        { Id: 7, Name: "Červenec" },
+        { Id: 8, Name: "Srpen" },
+        { Id: 9, Name: "Září" },
+        { Id: 10, Name: "Říjen" },
+        { Id: 11, Name: "Listopad" },
+        { Id: 12, Name: "Prosinec" }
+    ];
 
     function loadPeople() {
         $http.get(baseUrl + 'people')
