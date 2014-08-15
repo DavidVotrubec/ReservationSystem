@@ -23,9 +23,18 @@
         { Id: 11, Name: "Listopad" },
         { Id: 12, Name: "Prosinec" }
     ];
+    this.weekDays = [
+        {Order: 1, Name: "Pondělí"},
+        {Order: 2, Name: "Úterý"},
+        {Order: 3, Name: "Středa"},
+        {Order: 4, Name: "Čtvrtek"},
+        {Order: 5, Name: "Pátek"},
+        {Order: 6, Name: "Sobota"},
+        {Order: 7, Name: "Neděle"}
+    ];
 
     function loadPeople() {
-        $http.get(baseUrl + 'people')
+        $http.get(baseUrl + 'people/' + that.filter.year + '/' + that.filter.month)
             .success((function (data) {
                 that.people = data.items;
             }))

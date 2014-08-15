@@ -2,6 +2,16 @@
     
 }
 
+.calendar .day-header 
+{
+    font-weight: bold;
+    width: 180px; 
+    margin-right: 8px;
+    margin-bottom: 6px;
+    padding: 5px; 
+    float:left;
+}
+
 .calendar .day {
     width: 180px; 
     height: 290px;

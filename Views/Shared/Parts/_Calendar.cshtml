@@ -13,6 +13,7 @@
 </div>
 
 <div class="calendar">
+    <div class="day-header" ng-repeat="day in vm.weekDays" ng-bind="day.Name"></div>
     <div class="day" ng-repeat="day in vm.days">
         {{day.date.calendar()}}
         <br/>
