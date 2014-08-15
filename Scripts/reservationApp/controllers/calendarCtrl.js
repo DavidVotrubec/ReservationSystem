@@ -39,9 +39,9 @@
         });
     };
 
-    this.isPersonRegistered = function (person, day) {
-        if (person == null) return false;
-        return _.findWhere(day.persons, { Id: person.Id }) != null;
+    this.isPersonRegistered = function (personId, day) {
+        if (personId == null) return false;
+        return _.findWhere(day.persons, { Id: personId }) != null;
     };
 
     function getDays() {

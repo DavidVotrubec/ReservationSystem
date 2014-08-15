@@ -13,7 +13,7 @@
         {{day.date.calendar()}}
         <br/>
         <div class="people">
-            <div ng-repeat="p in day.persons track by $index" ng-bind="p.Name" ng-class="{'registered': vm.isPersonRegistered(p, day)}"></div>
+            <div ng-repeat="p in day.persons track by $index" ng-bind="p.Name" ng-class="{'registered': vm.isPersonRegistered(vm.filter.person, day)}"></div>
         </div>
     </div>
 </div>
