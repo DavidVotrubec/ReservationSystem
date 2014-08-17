@@ -63,12 +63,12 @@
 
     this.getPeopleForClass = function (classId) {
         var classFound = _.findWhere(that.classes, { Id: classId });
-        return classFound.People;
+        return classFound != null ? classFound.People : [];
     };
 
     this.isPersonRegistered = function (personId, day) {
         if (personId == null) return false;
-        return _.findWhere(day.persons, { Id: personId }) != null;
+        return _.findWhere(day.People, { Id: personId }) != null;
     };
 
 } ])

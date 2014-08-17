@@ -20,7 +20,11 @@ namespace ReservationSystem.App_Start
                 ).IncludeDirectory("~/Scripts/reservationApp/controllers", "*.js"));
             
 
-            bundles.Add(new StyleBundle("~/Content/css").Include("~/Content/site.css"));
+            bundles.Add(new StyleBundle("~/Content/css").Include(
+                "~/Content/site.css",
+                "~/Content/bootstrap/bootstrap.css",
+                "~/Content/bootstrap/bootstrap-theme.css"
+                ));
         }
     }
 }

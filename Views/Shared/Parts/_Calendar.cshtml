@@ -13,12 +13,24 @@
 </div>
 
 <div class="calendar">
-    <div class="day-header" ng-repeat="day in vm.weekDays" ng-bind="day.Name"></div>
-    <div class="day" ng-repeat="day in vm.reservations.Days">
-        {{day.Date}}
-        <br/>
-        <div class="people">
-            <div ng-repeat="p in day.People track by $index" ng-bind="p.Name" ng-class="{'registered': vm.isPersonRegistered(vm.filter.person, day)}"></div>
-        </div>
-    </div>
+    <table class="table">
+        <thead>
+            <tr>
+                <th class="day-header" ng-repeat="day in vm.weekDays" ng-bind="day.Name"></th>
+            </tr>
+        </thead>
+        
+        <tbody>
+            <tr ng-repeat="week in vm.reservations.Weeks">
+                <td class="day" ng-repeat="day in week.Days" ng-class="{'registered': vm.isPersonRegistered(vm.filter.person, day)}">
+                    <strong>{{day.Date}}</strong>
+                    <br/>
+                    <div class="people" ng-if="day != null">
+                        <div ng-repeat="p in day.People track by $index" ng-bind="p.Name"></div>
+                    </div>
+                </td>    
+            </tr>
+            
+        </tbody>
+    </table>
 </div>
