@@ -1,4 +1,4 @@
-﻿angular.module("ReservationApp").controller("CalendarCtrl", ["$http", function ($http) {
+﻿angular.module("ReservationApp").controller("CalendarCtrl", ["$http", "$q", function ($http, $q) {
 
     //TODO: Move to some config
     var baseUrl = 'http://davidvotrubec.apiary-mock.com/' + 'reservation/';
@@ -24,19 +24,19 @@
         { Id: 12, Name: "Prosinec" }
     ];
     this.weekDays = [
-        {Order: 1, Name: "Pondělí"},
-        {Order: 2, Name: "Úterý"},
-        {Order: 3, Name: "Středa"},
-        {Order: 4, Name: "Čtvrtek"},
-        {Order: 5, Name: "Pátek"},
-        {Order: 6, Name: "Sobota"},
-        {Order: 7, Name: "Neděle"}
+        { Order: 1, Name: "Pondělí" },
+        { Order: 2, Name: "Úterý" },
+        { Order: 3, Name: "Středa" },
+        { Order: 4, Name: "Čtvrtek" },
+        { Order: 5, Name: "Pátek" },
+        { Order: 6, Name: "Sobota" },
+        { Order: 7, Name: "Neděle" }
     ];
 
-    function loadPeople() {
+    function loadReservation() {
         $http.get(baseUrl + 'people/' + that.filter.year + '/' + that.filter.month)
             .success((function (data) {
-                that.people = data.items;
+                that.reservations = data;
             }))
             .error(function () {
                 that.isLoadingIngredients = false;
@@ -53,37 +53,22 @@
             });
     }
 
-    loadClasses();
-    loadPeople();
+    function loadAll() {
+        $q.all(loadClasses(), loadReservation()).then(function (allData) {
+            console.log('all data loaded', allData);
+        });
+    }
+
+    loadAll();
 
     this.getPeopleForClass = function (classId) {
-        return _.filter(that.people, function (p) {
-            return p.Class == classId;
-        });
+        var classFound = _.findWhere(that.classes, { Id: classId });
+        return classFound.People;
     };
 
     this.isPersonRegistered = function (personId, day) {
         if (personId == null) return false;
         return _.findWhere(day.persons, { Id: personId }) != null;
     };
-
-    function getDays() {
-        var today = moment();
-        for (var i = 1; i < 31; i++) {
-            var day = {
-                date: today.add(1, 'days'),
-                persons: getRandomPeople()
-            };
-            that.days.push(day);
-        }
-    }
-
-    function getRandomPeople() {
-        var people = that.getPeopleForClass(that.filter.class || "2");
-        return people;
-    }
-
-    //TODO: use $q
-    setTimeout(getDays, 4000);
 
 } ])
