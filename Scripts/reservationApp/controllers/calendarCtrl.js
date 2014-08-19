@@ -77,4 +77,10 @@
         return _.findWhere(day.People, { Id: personId }) != null;
     };
 
+    this.remove = function (person, day) {
+        if (confirm("Chcete opravdu zrušit rezervaci?")) {
+            day.People = _.without(day.People, person);
+        }
+    };
+
 } ])

@@ -4,19 +4,20 @@
         <meta charset="utf-8" />
         <title>@ViewBag.Title</title>
         <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+        <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
         <meta name="viewport" content="width=device-width" />
         @Styles.Render("~/Content/css")
     </head>
     <body>
         
-        <div id="body">
+        <div id="body" class="container">
             @RenderSection("featured", required: false)
             <section class="content-wrapper main-content clear-fix">
                 @RenderBody()
             </section>
         </div>
         <footer>
-            <div class="content-wrapper">
+            <div class="container">
                 <div class="float-left">
                     <p>&copy; @DateTime.Now.Year - David Votrubec <a href="mailto:david.votrubec@gmail.com?subject=Demo rezervačního systému pro školky">david.votrubec@gmail.com</a></p>
                 </div>
@@ -26,5 +27,6 @@
         @Scripts.Render("~/bundles/basic")
         @Scripts.Render("~/bundles/app")
         @RenderSection("scripts", required: false)
+        
     </body>
 </html>

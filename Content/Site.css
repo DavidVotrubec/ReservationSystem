@@ -1,4 +1,12 @@
-﻿.calendar {
+﻿.filter {
+    margin-bottom: 14px;
+    background-color: rgb(210, 218, 219);
+    padding: 12px;
+    color: black;
+    border-radius: 4px;
+}
+
+.calendar {
     
 }
 
@@ -14,14 +22,23 @@
 
 .calendar .day {
     width: 180px; 
-    height: 290px;
+    height: 320px;
     margin-right: 8px;
     margin-bottom: 6px;
     padding: 5px; 
     border: 1px solid gray;
     float:left;
+    overflow: auto;
 }
 
 .calendar .day.registered {
     background-color: rgb(246, 246, 122);
+}
+
+.person .btn {
+    display: none;
+}
+
+.person:hover .btn {
+    display: inline-block;
 }

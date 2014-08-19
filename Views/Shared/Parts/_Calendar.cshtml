@@ -1,4 +1,4 @@
-﻿<form  class="form-inline">
+﻿<form  class="form-inline filter">
     <select ng-options="a.Id as a.Name for a in vm.classes" ng-model="vm.filter.class" ng-change="vm.loadReservation()" class="form-control"> 
         <option value="">Vyber třídu</option>
     </select>
@@ -32,7 +32,12 @@
                     <strong ng-if="day.Inqueue.length > 0">Čekající: {{day.Inqueue.length}}</strong>
 
                     <div class="people" ng-if="day != null">
-                        <div ng-repeat="p in day.People track by $index" ng-bind="p.Name"></div>
+                        <div class="person" ng-repeat="p in day.People track by $index">
+                            <span ng-bind="p.Name"></span>
+                            <button type="button" class="btn btn-sm btn-danger pull-right" ng-click="vm.remove(p, day)">
+                                <i class="fa fa-times"></i>
+                            </button>
+                        </div>
                     </div>
                 </td>    
             </tr>
