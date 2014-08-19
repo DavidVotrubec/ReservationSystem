@@ -78,7 +78,7 @@
     };
 
     this.remove = function (person, day) {
-        if (confirm("Chcete opravdu zrušit rezervaci?")) {
+        if (confirm("Chcete opravdu zrušit rezervaci pro " + person.Name + "?")) {
             day.People = _.without(day.People, person);
         }
     };

@@ -39,6 +39,14 @@
     display: none;
 }
 
+.person .res-btn-delete {
+    padding: 1px 6px;
+}
+
+.person:hover {
+    border-bottom: 1px solid silver;
+}
+
 .person:hover .btn {
     display: inline-block;
 }
