@@ -4,7 +4,7 @@
     var baseUrl = 'http://davidvotrubec.apiary-mock.com/' + 'reservation/';
 
     var that = this;
-    this.filter = { 'class': null, person: null, year: 2014, month: 9 };
+    this.filter = { 'class': '1', person: null, year: 2014, month: 9 };
 
     this.days = [];
     this.people = [];
@@ -29,19 +29,25 @@
         { Order: 3, Name: "Středa" },
         { Order: 4, Name: "Čtvrtek" },
         { Order: 5, Name: "Pátek" },
-        { Order: 6, Name: "Sobota" },
-        { Order: 7, Name: "Neděle" }
+    //{ Order: 6, Name: "Sobota" },
+    //{ Order: 7, Name: "Neděle" }
     ];
 
-    function loadReservation() {
-        $http.get(baseUrl + 'people/' + that.filter.year + '/' + that.filter.month)
+    that.loadReservation = function () {
+        if (that.filter.class == null || that.filter.class == '') {
+            return;
+        }
+
+        that.isLoading = true;
+        $http.get(baseUrl + 'people/' + that.filter.class + '/' + that.filter.year + '/' + that.filter.month)
             .success((function (data) {
                 that.reservations = data;
+                that.isLoading = false;
             }))
             .error(function () {
-                that.isLoadingIngredients = false;
+                that.isLoading = false;
             });
-    }
+    };
 
     function loadClasses() {
         $http.get(baseUrl + 'classes')
@@ -49,13 +55,13 @@
                 that.classes = data.items;
             }))
             .error(function () {
-                that.isLoadingIngredients = false;
             });
     }
 
     function loadAll() {
-        $q.all(loadClasses(), loadReservation()).then(function (allData) {
-            console.log('all data loaded', allData);
+        that.isLoading = true;
+        $q.all(loadClasses(), that.loadReservation()).then(function (allData) {
+            that.isLoading = false;
         });
     }
 

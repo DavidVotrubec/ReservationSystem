@@ -1,18 +1,20 @@
-﻿<div class="filter">
-    <select ng-options="a.Id as a.Name for a in vm.classes" ng-model="vm.filter.class">
-        <option value="">Třída</option>
+﻿<form  class="form-inline">
+    <select ng-options="a.Id as a.Name for a in vm.classes" ng-model="vm.filter.class" ng-change="vm.loadReservation()" class="form-control"> 
+        <option value="">Vyber třídu</option>
     </select>
     
-    <select ng-options="a.Id as a.Name for a in vm.getPeopleForClass(vm.filter.class)" ng-model="vm.filter.person">
-        <option value="">Dítě</option>
+    <select ng-options="a.Id as a.Name for a in vm.getPeopleForClass(vm.filter.class)" ng-model="vm.filter.person" class="form-control" >
+        <option value="">Vyber dítě</option>
     </select>
     
-    <select ng-options="a.Id as a.Name for a in vm.months" ng-model="vm.filter.month">
-        <option value="">Měsíc</option>
+    <select ng-options="a.Id as a.Name for a in vm.months" ng-model="vm.filter.month" class="form-control" >
+        <option value="">Vyber měsíc</option>
     </select>
-</div>
+</form>
 
-<div class="calendar">
+<div class="loading" ng-show="vm.isLoading">Načítám ... </div>
+
+<div class="calendar" ng-show="vm.isLoading == false">
     <table class="table">
         <thead>
             <tr>
@@ -25,6 +27,10 @@
                 <td class="day" ng-repeat="day in week.Days" ng-class="{'registered': vm.isPersonRegistered(vm.filter.person, day)}">
                     <strong>{{day.Date}}</strong>
                     <br/>
+                    <strong>Obsazeno: {{day.Filled}} z {{day.Capacity}}</strong>
+                    <strong>Volných míst: {{day.Capacity - day.Filled}}</strong>
+                    <strong ng-if="day.Inqueue.length > 0">Čekající: {{day.Inqueue.length}}</strong>
+
                     <div class="people" ng-if="day != null">
                         <div ng-repeat="p in day.People track by $index" ng-bind="p.Name"></div>
                     </div>
