@@ -1,4 +1,8 @@
-﻿.filter {
+﻿body {
+    padding-top: 190px;    
+}
+
+.filter {
     margin-bottom: 14px;
     background-color: rgb(210, 218, 219);
     padding: 12px;
@@ -14,14 +18,19 @@
     font-weight: bold;
 }
 
-.calendar {
-    
+.note {
+    color: #666;
+}
+
+.calendar .note {
+    display: inline-block;
+    margin-left: 5px;
 }
 
 .calendar .day-header 
 {
     font-weight: bold;
-    width: 180px; 
+    width: 200px; 
     margin-right: 8px;
     margin-bottom: 6px;
     padding: 5px; 
@@ -29,18 +38,29 @@
 }
 
 .calendar .day {
-    width: 180px; 
+    width: 200px; 
     height: 320px;
     margin-right: 8px;
     margin-bottom: 6px;
-    padding: 5px; 
     border: 1px solid gray;
     float:left;
     overflow: auto;
+    padding: 0px;
 }
 
 .calendar .day.registered {
     background-color: rgb(246, 246, 122);
+}
+
+.calendar .day header {
+    background-color: rgb(210, 218, 219); /*same as filter */
+    border-bottom: 1px solid #444;    
+    padding: 5px; 
+    padding-bottom: 7px;    
+}
+
+.calendar .people {
+    padding: 5px;
 }
 
 .person .btn {

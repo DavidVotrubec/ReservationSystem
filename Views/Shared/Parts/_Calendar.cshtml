@@ -1,18 +1,24 @@
-﻿<form  class="form-inline filter">
-    <select ng-options="a.Id as a.Name for a in vm.classes" ng-model="vm.filter.class" ng-change="vm.loadReservation()" class="form-control"
-        ng-class="{'active':vm.filter.class != null}"> 
-        <option value="">Vyber třídu</option>
-    </select>
+﻿<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+  <div class="container">
+    <h1>Demo rezervačního systému pro školky, družiny a jiné dětské organizace</h1>
+
+    <form  class="form-inline filter">
+        <select ng-options="a.Id as a.Name for a in vm.classes" ng-model="vm.filter.class" ng-change="vm.loadReservation()" class="form-control"
+            ng-class="{'active':vm.filter.class != null}"> 
+            <option value="">Vyber třídu</option>
+        </select>
     
-    <select ng-options="a.Id as a.Name for a in vm.getPeopleForClass(vm.filter.class)" ng-model="vm.filter.person" class="form-control" 
-        ng-class="{'active':vm.filter.person != null}">
-        <option value="">Vyber dítě</option>
-    </select>
+        <select ng-options="a.Id as a.Name for a in vm.getPeopleForClass(vm.filter.class)" ng-model="vm.filter.person" class="form-control" 
+            ng-class="{'active':vm.filter.person != null}">
+            <option value="">Vyber dítě</option>
+        </select>
     
-    <select ng-options="a.Id as a.Name for a in vm.months" ng-model="vm.filter.month" class="form-control" >
-        <option value="">Vyber měsíc</option>
-    </select>
-</form>
+        <select ng-options="a.Id as a.Name for a in vm.months" ng-model="vm.filter.month" class="form-control" >
+            <option value="">Vyber měsíc</option>
+        </select>
+    </form>
+  </div>
+</nav>
 
 <div class="loading" ng-show="vm.isLoading">Načítám ... </div>
 
@@ -20,23 +26,27 @@
     <table class="table">
         <thead>
             <tr>
-                <th class="day-header" ng-repeat="day in vm.weekDays" ng-bind="day.Name"></th>
+                <th class="day-header" ng-repeat="day in vm.weekDays">
+                    <span ng-bind="day.Name"></span>
+                    <span class="note" ng-bind="'(' + day.Program + ')'"></span>
+                </th>
             </tr>
         </thead>
         
         <tbody>
             <tr ng-repeat="week in vm.reservations.Weeks">
                 <td class="day" ng-repeat="day in week.Days" ng-class="{'registered': vm.isPersonRegistered(vm.filter.person, day)}">
-                    <strong>{{day.Date}}</strong>
-                    <br/>
-                    <strong>Obsazeno: {{day.People.length}} z {{day.Capacity}}</strong>
-                    <strong>Volných míst: {{day.Capacity - day.People.length}}</strong>
-                    <strong ng-if="day.Inqueue.length > 0">Čekající: {{day.Inqueue.length}}</strong>
-
+                    <header>
+                        <strong>{{day.Date}}</strong>
+                        <br/>
+                        <strong>Obsazeno: {{day.People.length}} z {{day.Capacity}}</strong>
+                        <strong>Volných míst: {{day.Capacity - day.People.length}}</strong>
+                        <strong ng-if="day.Inqueue.length > 0">Čekající: {{day.Inqueue.length}}</strong>
+                    </header>
                     <div class="people" ng-if="day != null">
                         <div class="person" ng-repeat="p in day.People track by $index" ng-class="{'bold': p.Id == vm.filter.person}">
                             <span ng-bind="p.Name"></span>
-                            <button type="button" class="btn btn-sm btn-danger res-btn-delete pull-right" ng-click="vm.remove(p, day)">
+                            <button type="button" class="btn btn-sm btn-danger res-btn-delete pull-right" ng-click="vm.remove(p, day)" title="Zrušit rezervaci">
                                 <i class="fa fa-times"></i>
                             </button>
                         </div>
