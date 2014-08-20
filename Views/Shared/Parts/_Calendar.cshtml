@@ -1,9 +1,11 @@
 ﻿<form  class="form-inline filter">
-    <select ng-options="a.Id as a.Name for a in vm.classes" ng-model="vm.filter.class" ng-change="vm.loadReservation()" class="form-control"> 
+    <select ng-options="a.Id as a.Name for a in vm.classes" ng-model="vm.filter.class" ng-change="vm.loadReservation()" class="form-control"
+        ng-class="{'active':vm.filter.class != null}"> 
         <option value="">Vyber třídu</option>
     </select>
     
-    <select ng-options="a.Id as a.Name for a in vm.getPeopleForClass(vm.filter.class)" ng-model="vm.filter.person" class="form-control" >
+    <select ng-options="a.Id as a.Name for a in vm.getPeopleForClass(vm.filter.class)" ng-model="vm.filter.person" class="form-control" 
+        ng-class="{'active':vm.filter.person != null}">
         <option value="">Vyber dítě</option>
     </select>
     
