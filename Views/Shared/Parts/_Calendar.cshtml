@@ -32,7 +32,7 @@
                     <strong ng-if="day.Inqueue.length > 0">Čekající: {{day.Inqueue.length}}</strong>
 
                     <div class="people" ng-if="day != null">
-                        <div class="person" ng-repeat="p in day.People track by $index">
+                        <div class="person" ng-repeat="p in day.People track by $index" ng-class="{'bold': p.Id == vm.filter.person}">
                             <span ng-bind="p.Name"></span>
                             <button type="button" class="btn btn-sm btn-danger res-btn-delete pull-right" ng-click="vm.remove(p, day)">
                                 <i class="fa fa-times"></i>
