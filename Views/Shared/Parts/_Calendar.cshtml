@@ -29,6 +29,12 @@
                 <th class="day-header" ng-repeat="day in vm.weekDays">
                     <span ng-bind="day.Name"></span>
                     <span class="note" ng-bind="'(' + day.Program + ')'"></span>
+                    
+                    <div class="btn btn-sm btn-success" ng-if="vm.filter.person && !vm.isPersonRegisteredForWeekday(vm.filter.person, day)" 
+                            title="{{'Vytvořit rezervaci pro ' + vm.getSelectedPersonName()}}"
+                            ng-click="vm.addToWeekDay(vm.filter.person, vm.filter.class, day)">
+                        <i class="fa fa-plus"></i>
+                    </div>
                 </th>
             </tr>
         </thead>

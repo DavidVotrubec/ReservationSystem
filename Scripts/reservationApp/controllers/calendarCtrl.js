@@ -24,13 +24,13 @@
         { Id: 12, Name: "Prosinec" }
     ];
     this.weekDays = [
-        { Order: 1, Name: "Pondělí", Program: "Výlet" },
-        { Order: 2, Name: "Úterý", Program: "Malování" },
-        { Order: 3, Name: "Středa", Program: "Muzicírování" },
-        { Order: 4, Name: "Čtvrtek", Program: "Pečení chleba" },
-        { Order: 5, Name: "Pátek", Program: "Řemesla" },
-    //{ Order: 6, Name: "Sobota" },
-    //{ Order: 7, Name: "Neděle" }
+        { Order: 0, Name: "Pondělí", Program: "Výlet" },
+        { Order: 1, Name: "Úterý", Program: "Malování" },
+        { Order: 2, Name: "Středa", Program: "Muzicírování" },
+        { Order: 3, Name: "Čtvrtek", Program: "Pečení" },
+        { Order: 4, Name: "Pátek", Program: "Řemesla" },
+    //{ Order: 5, Name: "Sobota" },
+    //{ Order: 6, Name: "Neděle" }
     ];
 
     that.loadReservation = function () {
@@ -77,6 +77,10 @@
         return _.findWhere(day.People, { Id: personId }) != null;
     };
 
+    this.isPersonRegisteredForWeekday = function (personId, weekDay) {
+        return false;
+    };
+
     this.remove = function (person, day) {
         if (confirm("Chcete opravdu zrušit rezervaci pro " + person.Name + "?")) {
             day.People = _.without(day.People, person);
@@ -96,6 +100,25 @@
             }
         });
     };
+
+    this.addToWeekDay = function (personId, classId, weekDay) {
+        var days = getDays(weekDay);
+        that.add(personId, classId, days);
+    };
+
+    function getDays(weekDay) {
+        var index = weekDay.Order;
+        var days = [];
+
+        _.each(that.reservations.Weeks, function (week) {
+            var day = week.Days[index];
+            if (day) {
+                days.push(day);
+            }
+        });
+
+        return days;
+    }
 
     this.getSelectedPersonName = function () {
         if (!that.filter.person || !that.filter.class) {
