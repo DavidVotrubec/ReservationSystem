@@ -83,4 +83,27 @@
         }
     };
 
+    this.add = function (personId, classId, days) {
+        var personFound = _.findWhere(that.getPeopleForClass(classId), { Id: that.filter.person });
+
+        if (!personFound) {
+            return;
+        }
+
+        _.each(days, function (day) {
+            if (!that.isPersonRegistered(personId, day)) {
+                day.People.push(personFound);
+            }
+        });
+    };
+
+    this.getSelectedPersonName = function () {
+        if (!that.filter.person || !that.filter.class) {
+            return null;
+        }
+
+        var personFound = _.findWhere(that.getPeopleForClass(that.filter.class), { Id: that.filter.person });
+        return personFound != null ? personFound.Name : null;
+    };
+
 } ])
