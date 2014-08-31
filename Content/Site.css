@@ -58,6 +58,12 @@
     display: inline-block;
 }
 
+.day .counter.overlimit 
+{
+    background-color: rgb(189, 38, 38);
+    color: white;
+}
+
 .calendar .day.registered {
     background-color: rgb(246, 246, 122);
 }

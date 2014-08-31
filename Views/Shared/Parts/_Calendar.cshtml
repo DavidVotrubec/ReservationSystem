@@ -50,7 +50,8 @@
                         <strong>{{day.Date}}</strong>
                         <strong ng-if="day.Inqueue.length > 0">Čekající: {{day.Inqueue.length}}</strong>
                         
-                        <div class="counter pull-right" ng-bind="day.People.length + ' / ' + day.Capacity"
+                        <div class="counter pull-right" ng-class="{'overlimit': vm.isOverLimit(day)}"
+                             ng-bind="day.People.length + ' / ' + day.Capacity"
                              title="Obsazeno: {{day.People.length}} z {{day.Capacity}}"></div>
                         
                         <br/>

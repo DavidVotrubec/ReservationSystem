@@ -81,6 +81,10 @@
         return false;
     };
 
+    this.isOverLimit = function(day) {
+        return day.People.length > day.Capacity;
+    };
+
     this.remove = function (person, day) {
         if (confirm("Chcete opravdu zrušit rezervaci pro " + person.Name + "?")) {
             day.People = _.without(day.People, person);
