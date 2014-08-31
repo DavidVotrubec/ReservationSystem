@@ -34,7 +34,7 @@
                     <span ng-bind="day.Name"></span>
                     <span class="note" ng-bind="'(' + day.Program + ')'"></span>
                     
-                    <div class="btn btn-sm btn-success" ng-if="vm.filter.person && !vm.isPersonRegisteredForWeekday(vm.filter.person, day)" 
+                    <div class="btn btn-sm btn-success pull-right" ng-if="vm.filter.person && !vm.isPersonRegisteredForWeekday(vm.filter.person, day)" 
                             title="{{'Vytvořit rezervaci pro ' + vm.getSelectedPersonName()}}"
                             ng-click="vm.addToWeekDay(vm.filter.person, vm.filter.class, day)">
                         <i class="fa fa-plus"></i>
@@ -48,7 +48,6 @@
                 <td class="day" ng-repeat="day in week.Days" ng-class="{'registered': vm.isPersonRegistered(vm.filter.person, day)}">
                     <header>
                         <strong>{{day.Date}}</strong>
-                        <strong ng-if="day.Inqueue.length > 0">Čekající: {{day.Inqueue.length}}</strong>
                         
                         <div class="counter pull-right" ng-class="{'overlimit': vm.isOverLimit(day)}"
                              ng-bind="day.People.length + ' / ' + day.Capacity"
@@ -63,7 +62,7 @@
                         <div class="clearfix"></div>
                     </header>
                     <div class="people" ng-if="day != null">
-                        <div class="person" ng-repeat="p in day.People track by $index" ng-class="{'bold': p.Id == vm.filter.person}">
+                        <div class="person" ng-repeat="p in day.People track by $index" ng-class="{'bold': p.Id == vm.filter.person, 'overlimit': vm.isPersonOverLimit(p, day)}">
                             <span ng-bind="p.Name"></span>
                             <button type="button" class="btn btn-sm btn-danger res-btn-delete pull-right" ng-click="vm.remove(p, day)" title="Zrušit rezervaci">
                                 <i class="fa fa-times"></i>

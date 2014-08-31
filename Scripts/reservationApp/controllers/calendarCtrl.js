@@ -81,8 +81,14 @@
         return false;
     };
 
-    this.isOverLimit = function(day) {
+    this.isOverLimit = function (day) {
         return day.People.length > day.Capacity;
+    };
+
+    this.isPersonOverLimit = function (person, day) {
+        var limit = parseInt(day.Capacity, 10);
+        var index = _.indexOf(day.People, person);
+        return index >= limit;
     };
 
     this.remove = function (person, day) {

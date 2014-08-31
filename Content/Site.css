@@ -83,6 +83,11 @@
     padding: 5px;
 }
 
+.person.overlimit {
+    color: red;
+    font-weight: bold;
+}
+
 .person .btn {
     display: none;
 }
