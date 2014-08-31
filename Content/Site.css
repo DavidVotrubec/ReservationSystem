@@ -48,6 +48,16 @@
     padding: 0px;
 }
 
+.day .counter {
+    background-color: rgb(162, 203, 98);
+    color: black;
+    border: 1px solid black;
+    border-radius: 2px;
+    padding: 4px;
+    font-weight: bold;
+    display: inline-block;
+}
+
 .calendar .day.registered {
     background-color: rgb(246, 246, 122);
 }

@@ -46,10 +46,10 @@
                 <td class="day" ng-repeat="day in week.Days" ng-class="{'registered': vm.isPersonRegistered(vm.filter.person, day)}">
                     <header>
                         <strong>{{day.Date}}</strong>
-                        <br/>
-                        <strong>Obsazeno: {{day.People.length}} z {{day.Capacity}}</strong>
-                        <strong>Volných míst: {{day.Capacity - day.People.length}}</strong>
                         <strong ng-if="day.Inqueue.length > 0">Čekající: {{day.Inqueue.length}}</strong>
+                        
+                        <div class="counter pull-right" ng-bind="day.People.length + ' / ' + day.Capacity"
+                             title="Obsazeno: {{day.People.length}} z {{day.Capacity}}"></div>
                         
                         <br/>
                         <br/>
