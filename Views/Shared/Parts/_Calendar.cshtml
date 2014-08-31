@@ -1,8 +1,10 @@
 ﻿<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
-    <h1>Demo rezervačního systému pro školky, družiny a jiné dětské organizace</h1>
+      <h1>Demo rezervačního systému pro školky, družiny a jiné dětské organizace</h1>
+      
+      <h3>Toto je pouze ukázka, žádné změny se neukládají</h3>
 
-    <form  class="form-inline filter">
+      <form  class="form-inline filter">
         <select ng-options="a.Id as a.Name for a in vm.classes" ng-model="vm.filter.class" ng-change="vm.loadReservation()" class="form-control"
             ng-class="{'active':vm.filter.class != null}"> 
             <option value="">Vyber třídu</option>
