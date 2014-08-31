@@ -53,14 +53,14 @@
                         <div class="counter pull-right" ng-class="{'overlimit': vm.isOverLimit(day)}"
                              ng-bind="day.People.length + ' / ' + day.Capacity"
                              title="Obsazeno: {{day.People.length}} z {{day.Capacity}}"></div>
-                        
-                        <br/>
-                        <br/>
-                        <div class="btn btn-sm btn-success" ng-if="vm.filter.person && !vm.isPersonRegistered(vm.filter.person, day)" 
+
+                        <div class="btn btn-sm btn-success pull-right btn-add" ng-if="vm.filter.person && !vm.isPersonRegistered(vm.filter.person, day)" 
                              title="{{'Vytvořit rezervaci pro ' + vm.getSelectedPersonName()}}"
                              ng-click="vm.add(vm.filter.person, vm.filter.class, [day])">
                             <i class="fa fa-plus"></i>
                         </div>
+                        
+                        <div class="clearfix"></div>
                     </header>
                     <div class="people" ng-if="day != null">
                         <div class="person" ng-repeat="p in day.People track by $index" ng-class="{'bold': p.Id == vm.filter.person}">

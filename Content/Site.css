@@ -48,6 +48,10 @@
     padding: 0px;
 }
 
+.day .btn-add {
+    margin-right: 10px;
+}
+
 .day .counter {
     background-color: rgb(162, 203, 98);
     color: black;
