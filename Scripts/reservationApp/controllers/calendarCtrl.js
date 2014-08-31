@@ -129,4 +129,8 @@
         return personFound != null ? personFound.Name : null;
     };
 
+    this.copyReservations = function () {
+        alert('Kopírování rezervací není v demo verzi dostupné.');
+    };
+
 } ])

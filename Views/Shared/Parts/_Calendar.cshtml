@@ -15,10 +15,12 @@
             <option value="">Vyber dítě</option>
         </select>
     
-        <select ng-options="a.Id as a.Name for a in vm.months" ng-model="vm.filter.month" class="form-control" >
-            <option value="">Vyber měsíc</option>
-        </select>
-    </form>
+          <select ng-options="a.Id as a.Name for a in vm.months" ng-model="vm.filter.month" class="form-control" >
+              <option value="">Vyber měsíc</option>
+          </select>
+          
+          <div class="btn btn-default pull-right" ng-click="vm.copyReservations()">Zkopírovat rezervace do dalšího měsíce</div>
+      </form>
   </div>
 </nav>
 
