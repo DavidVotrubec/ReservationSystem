@@ -16,3 +16,5 @@ TODO: Icons ispiration http://publicis-indonesia.github.io/Waves/
 * pri zruseni registrace automaticky posunout nahradnika nahoru (pokud bude soucasti day.People, tak je to zadarmo :) )
 
 Pro Prihlasovani pouzit Satellizer? https://github.com/sahat/satellizer
+
+Seznam skolek: http://lesnims.cz/lesni-ms-v-cr
