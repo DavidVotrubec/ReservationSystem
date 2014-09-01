@@ -14,3 +14,5 @@ TODO: Icons ispiration http://publicis-indonesia.github.io/Waves/
 * nahradnici jsou automaticky ti z day.People, jejichz index je vetsi nez day.Capacity
 * nahradnici oznaceni cervene
 * pri zruseni registrace automaticky posunout nahradnika nahoru (pokud bude soucasti day.People, tak je to zadarmo :) )
+
+Pro Prihlasovani pouzit Satellizer? https://github.com/sahat/satellizer
