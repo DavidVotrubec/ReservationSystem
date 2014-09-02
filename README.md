@@ -18,3 +18,8 @@ TODO: Icons ispiration http://publicis-indonesia.github.io/Waves/
 Pro Prihlasovani pouzit Satellizer? https://github.com/sahat/satellizer
 
 Seznam skolek: http://lesnims.cz/lesni-ms-v-cr
+
+* Melo by to umet automaticky pocitat vyuctovani za mesic
+* Posilat email + sms pri zmene rezervace (kdyz se clovek dostane z cekatelu na listinu)
+* Moznost menit limit na den (automaticky to zmeni cekatele na listinu)
+* moznost nastavit deadline na zmenu rezervace (treba 20h den predem)
