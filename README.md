@@ -10,9 +10,6 @@ TODO: Use BareKit instead of Bootstrap http://a2labs.github.io/barekit/ - they h
 TODO: Icons ispiration http://publicis-indonesia.github.io/Waves/
 
 * Presunout todo list na Trello
-* Dodat demo na tisk rozvrhu
-* nahradnici jsou automaticky ti z day.People, jejichz index je vetsi nez day.Capacity
-* nahradnici oznaceni cervene
 * pri zruseni registrace automaticky posunout nahradnika nahoru (pokud bude soucasti day.People, tak je to zadarmo :) )
 
 Pro Prihlasovani pouzit Satellizer? https://github.com/sahat/satellizer
@@ -26,6 +23,7 @@ Seznam skolek: http://lesnims.cz/lesni-ms-v-cr
 * kdyz si vyberu dite, tak system ukaze kolik zbyva nahrad k vybrani
 * podilat rodicum mail, 14dni (volitelne) predem ze nahrada vyprsi, at si ji vyberou
 * kdyz je nekdo treba 3 mesice nemocny, tak plati porad, ale ma pak dlouho nahradu => moznost prodlouzit nahradu
+* oznacit dopolecni a celodenni
 
 Nahrady
 * udelat prehled nahrad
@@ -39,3 +37,5 @@ Vyuctovani
 * admin musi zadat kolik ktery rodic zaplatil a kdy
 * system podle toho spocita kolik dluzi ci prebyva
 * moznost zadavat slevy (napriklad pro dlouhou absenci nebo cokoliv)
+* kdyz je hotove vyuctovani => tlacitko "poslat vyuctovani rodicum"
+* moznost pridavat poznamky k vyuctovani
